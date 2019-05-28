@@ -2,7 +2,7 @@
 
 if follow == noone
 {
-	instance_destroy(object_index)
+	instance_deactivate_object(object_index)
 	return
 }
 

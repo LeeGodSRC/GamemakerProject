@@ -1,27 +1,42 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-_up = keyboard_check(vk_up) || keyboard_check(ord("W"))
-_down = keyboard_check(vk_down) || keyboard_check(ord("S"))
-_left = keyboard_check(vk_left)  || keyboard_check(ord("A"))
-_right = keyboard_check(vk_right)  || keyboard_check(ord("D"))
+var _up = keyboard_check(vk_up) || keyboard_check(ord("W"))
+var _down = keyboard_check(vk_down) || keyboard_check(ord("S"))
+var _left = keyboard_check(vk_left)  || keyboard_check(ord("A"))
+var _right = keyboard_check(vk_right)  || keyboard_check(ord("D"))
 
-var _x = _right - _left
-var _y = _down - _up
+velocity = [(_right - _left) * _speed, (_down - _up) * _speed]
 
-_x *= hsp
-_y *= vsp
+move_and_contact_tiles(collisions_tile_map_id, 32, velocity)
 
-x = x + _x
-y = y + _y
+control_check_keyboards()
 
-if mouse_wheel_up() && heldslot > 0
+if mouse_wheel_up()
 {
-	heldslot -= 1
+	if slots[heldslot] != noone
+	{
+		instance_deactivate_object(slots[heldslot])
+	}
+	if (heldslot == 0) heldslot = array_length_1d(slots) -1
+	else heldslot -= 1
+	if slots[heldslot] != noone
+	{
+		instance_activate_object(slots[heldslot])
+	} else instance_activate_object(hands)
 }
-if mouse_wheel_down() && heldslot < array_length_1d(slots) - 1
+else if mouse_wheel_down()
 {
-	heldslot += 1
+	if slots[heldslot] != noone
+	{
+		instance_deactivate_object(slots[heldslot])
+	}
+	if (heldslot == array_length_1d(slots) - 1) heldslot = 0
+	else heldslot += 1
+	if slots[heldslot] != noone
+	{
+		instance_activate_object(slots[heldslot])
+	} else instance_activate_object(hands)
 }
 
 if slots[heldslot] != noone
@@ -32,8 +47,10 @@ if slots[heldslot] != noone
 
 if x - mouse_x > 0
 {
-	image_xscale = 1
+	image_xscale = Wave(0.9, 1.1, 3, 1)
 } else
 {
-	image_xscale = -1
+	image_xscale = Wave(-0.9, -1.1, 3, -1)
 }
+
+image_yscale = Wave(0.9, 1.1, 3, 1)

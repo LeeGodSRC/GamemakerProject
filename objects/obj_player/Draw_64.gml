@@ -1,14 +1,17 @@
 draw_text(20, 20, "Held slot: " + string(heldslot))
+draw_text(40, 40, "Cooldown " + string(_cooldown) + " " + sprite_get_name(sprite_hands))
 var i = 0
 repeat array_length_1d(slots)
 {
 	var _obj = slots[i]
+	if (heldslot == i) draw_set_color(c_red)
 	if (_obj == noone)
 	{
-		draw_text(20, 40 + i * 20, "Noone")
+		draw_text(20, 60 + i * 20, "Noone")
 	} else
 	{
-		draw_text(20, 40 + i * 20, _obj.name)
+		draw_text(20, 60 + i * 20, _obj.name)
 	}
+	draw_set_color(c_white)
 	i++
 }

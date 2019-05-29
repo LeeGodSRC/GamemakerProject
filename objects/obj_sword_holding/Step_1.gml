@@ -6,12 +6,8 @@ if follow == noone
 	return
 }
 
-image_angle = point_direction(x, y, mouse_x, mouse_y)
+direction = point_direction(x, y, mouse_x, mouse_y)
 
-if image_angle > 90 && image_angle < 270
-{
-	image_yscale = -1
-} else
-{
-	image_yscale = 1
-}
+if (direction > 90 && direction < 270) image_yscale = -1 else image_yscale = 1
+
+image_angle = direction

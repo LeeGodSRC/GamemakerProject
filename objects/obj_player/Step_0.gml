@@ -5,8 +5,11 @@ var _up = keyboard_check(vk_up) || keyboard_check(ord("W"))
 var _down = keyboard_check(vk_down) || keyboard_check(ord("S"))
 var _left = keyboard_check(vk_left)  || keyboard_check(ord("A"))
 var _right = keyboard_check(vk_right)  || keyboard_check(ord("D"))
+var _toSpeed = _speed
+if status == "HIT"
+	_toSpeed = _speed_hit
 
-velocity = [(_right - _left) * _speed, (_down - _up) * _speed]
+velocity = [(_right - _left) * _toSpeed, (_down - _up) * _toSpeed]
 
 move_and_contact_tiles(collisions_tile_map_id, 32, velocity)
 

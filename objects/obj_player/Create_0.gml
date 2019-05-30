@@ -5,6 +5,7 @@ collisions_tile_map_id = layer_tilemap_get_id(layer_id)
 sprite_hands = spr_hands
 
 _speed = 5
+_speed_hit = 0.8
 
 _health = 100
 _cooldown = 0

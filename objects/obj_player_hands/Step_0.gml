@@ -4,7 +4,7 @@ if follow == noone || follow.slots[follow.heldslot] != noone
 	return;
 }
 
-if follow.status == "HIT"
+if follow._status == status.ATTACK
 {
 	sprite_index = spr_hands_hit
 	y = follow.y + 8

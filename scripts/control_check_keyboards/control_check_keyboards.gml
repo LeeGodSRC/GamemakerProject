@@ -1,1 +1,1 @@
-if mouse_check_button(mb_left) control_leftclick()
+if ( mouse_check_button(mb_left) ) { control_leftclick(); }

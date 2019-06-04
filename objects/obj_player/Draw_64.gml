@@ -1,6 +1,11 @@
+#region Draw player status
 draw_text(20, 20, "Held slot: " + string(heldslot))
 draw_text(40, 40, "Cooldown " + string(_cooldown) + " " + sprite_get_name(sprite_hands))
+#endregion
+
+#region Draw inventory
 var i = 0
+
 repeat array_length_1d(slots)
 {
 	var _obj = slots[i]
@@ -15,3 +20,4 @@ repeat array_length_1d(slots)
 	draw_set_color(c_white)
 	i++
 }
+#endregion

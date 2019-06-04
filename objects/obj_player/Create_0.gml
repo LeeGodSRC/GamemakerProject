@@ -1,16 +1,34 @@
-/// @description Insert description here
+/// @description Init player variables
 
-var layer_id = layer_get_id("Collisions")
-collisions_tile_map_id = layer_tilemap_get_id(layer_id)
+//---------------------------- Player Status
+
+enum status {
+	
+	IDLE,
+	WALKING,
+	ATTACK,
+	TAKING_DAMAGE,
+	DEATH
+	
+}
+
+sprites_array = array_create(5)
+sprites_array[status.IDLE] = spr_player_idle
+sprites_array[status.ATTACK] = spr_player_hit
+
+//---------------------------- VARs
+
 sprite_hands = spr_hands
 
 _speed = 5
-_speed_hit = 0.8
+_speed_hit = 0.3
 
 _health = 100
 _cooldown = 0
 
-status = "IDLE"
+_status = status.IDLE
+
+//---------------------------- INVENTORY
 
 slots = array_create(9)
 heldslot = 0

@@ -6,7 +6,7 @@ if follow == noone || follow.slots[follow.heldslot] != noone
 
 if follow._status == status.ATTACK
 {
-	sprite_index = spr_hands_hit
+	sprite_index = sprites[follow._combat];
 	y = follow.y + 8
 	image_xscale = 1
 	image_yscale = 1

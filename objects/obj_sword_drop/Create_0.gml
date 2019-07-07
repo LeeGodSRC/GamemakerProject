@@ -1,1 +1,0 @@
-obj_type = obj_sword_holding

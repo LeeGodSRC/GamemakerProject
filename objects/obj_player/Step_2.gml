@@ -3,6 +3,7 @@ switch ( _status ) {
 	#region IDLE
 	case status.IDLE: {
 		sprite_hands = spr_hands
+		_slide_speed = min(_slide_speed + 0.02, 1.5);
 		break;
 	}
 	#endregion
@@ -13,13 +14,21 @@ switch ( _status ) {
 	}
 	#endregion
 	
+	#region SLIDING
+	
+	case status.SLIDING: {
+		break;
+	}
+	
+	#endregion
+	
 	#region ATTACK
 	case status.ATTACK: {
 		if ( _cooldown == 0 ) {
 			_status = status.IDLE;
+			_combat = noone;
 		} else {
 			_cooldown -= 1;
-			sprite_hands = spr_hands_hit;
 		}
 		break;
 	}
